@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Estudiante - Materia</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            
+            <br/>
+            <br/>
+            <h:outputLabel for="l1">Materia</h:outputLabel>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l2">Nombre: </h:outputLabel>
+            <h:inputText id="nombrem" value="#{controle.pojoMateria.nombre}"></h:inputText>
+            <br/>
+            <br/>
+            <h:outputLabel for="l3">Codigo: </h:outputLabel>
+            <h:inputText id="codigos" value="#{controle.pojoMateria.codigo}"></h:inputText>
+            <br/>
+            <br/>
+            <h:outputLabel for="l11">Creditos: </h:outputLabel>
+            <h:inputText id="creditos" value="#{controle.pojoMateria.creditos}"></h:inputText>
+            <br/>
+            <br/>
+            <p:separator/>
+            <h:commandButton
+                value="AGREGAR"
+                action="#{controle.crearMateria()}"
+                >
+            </h:commandButton>
+            <p:separator/>
+            
+            <br/>
+            <br/>
+            <h:outputLabel for="l4">Estudiante</h:outputLabel>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l5">Nombre: </h:outputLabel>
+            <h:inputText id="nombree" value="#{controle.pojoEstudiante.nombre}"></h:inputText>
+            <br/>
+            <br/>
+            <h:outputLabel for="l6">Curso: </h:outputLabel>
+            <h:inputText id="curso" value="#{controle.pojoEstudiante.curso}"></h:inputText>
+            <br/>
+            <br/>
+            <h:outputLabel for="l12">Codigo: </h:outputLabel>
+            <h:inputText id="codigoe" value="#{controle.pojoEstudiante.codigo}"></h:inputText>
+            <br/>
+            <br/>
+            <p:separator/>
+            <h:commandButton
+                value="AGREGAR"
+                action="#{controle.crearEstudiante()}"
+                >
+            </h:commandButton>
+            <p:separator/>
+            <br/>
+            <br/>
+            <h:outputLabel for="l7">ASIGNAR CALIFICACION</h:outputLabel>
+            <br/>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l8">Materia</h:outputLabel>
+            <p:selectOneMenu value="#{controle.pojoMateria.idm}">
+                <f:selectItems  value="#{controle.listarMateria()}" var="mate" itemLabel="#{mate.nombre}" itemValue="#{mate.idm}"/>
+            </p:selectOneMenu>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l9">Estudiante</h:outputLabel>
+            <p:selectOneMenu value="#{controle.pojoEstudiante.ide}">
+                <f:selectItems  value="#{controle.listarEstudiante()}" var="estu" itemLabel="#{estu.nombre}" itemValue="#{estu.ide}"/>
+            </p:selectOneMenu>
+            <br/>
+            <br/>
+            <h:outputLabel for="l20">Nota: </h:outputLabel>
+            <h:inputText id="notae" value="#{controle.pojoestMat.nota}"></h:inputText>
+            <br/>
+            <br/>
+            <p:separator/>
+            <h:commandButton
+                value="ASIGNAR"
+                action="#{controle.agregarNota()}"
+                >
+            </h:commandButton>
+            
+            
+       </h:form>
+    </h:body>
+</html>
+

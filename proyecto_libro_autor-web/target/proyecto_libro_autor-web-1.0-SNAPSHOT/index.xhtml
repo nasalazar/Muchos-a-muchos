@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registro</title>
+    </h:head>
+    <h:body>
+       <h:form id="form">
+            
+            <br/>
+            <br/>
+            <h:outputLabel for="l1">Autor</h:outputLabel>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l2">Nombre: </h:outputLabel>
+            <h:inputText id="nombrea" value="#{control.pojoAutor.nombre}"></h:inputText>
+            <br/>
+            <br/>
+            <h:outputLabel for="l3">Cedula: </h:outputLabel>
+            <h:inputText id="cedulaa" value="#{control.pojoAutor.cedula}"></h:inputText>
+            <br/>
+            <br/>
+            <p:separator/>
+            <h:commandButton
+                value="AGREGAR"
+                action="#{control.crearAutor()}"
+                >
+            </h:commandButton>
+            <p:separator/>
+            
+            <br/>
+            <br/>
+            <h:outputLabel for="l4">Libro</h:outputLabel>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l5">Nombre: </h:outputLabel>
+            <h:inputText id="nombrel" value="#{control.pojoLibro.nombre}"></h:inputText>
+            <br/>
+            <br/>
+            <h:outputLabel for="l6">Editorial: </h:outputLabel>
+            <h:inputText id="editorial" value="#{control.pojoLibro.editorial}"></h:inputText>
+            <br/>
+            <br/>
+            <p:separator/>
+            <h:commandButton
+                value="AGREGAR"
+                action="#{control.crearLibro()}"
+                >
+            </h:commandButton>
+            <p:separator/>
+            <br/>
+            <br/>
+            <h:outputLabel for="l7">ASIGNACION</h:outputLabel>
+            <br/>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l8">Autor</h:outputLabel>
+            <p:selectOneMenu value="#{control.pojoAutor.ida}">
+                <f:selectItems  value="#{control.listaAutor()}" var="aut" itemLabel="#{aut.nombre}" itemValue="#{aut.ida}"/>
+            </p:selectOneMenu>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l9">Libro</h:outputLabel>
+            <p:selectOneMenu value="#{control.pojoLibro.idl}">
+                <f:selectItems  value="#{control.listaLibro()}" var="lib" itemLabel="#{lib.nombre}" itemValue="#{lib.idl}"/>
+            </p:selectOneMenu>
+            <br/>
+            <p:separator/>
+            <h:commandButton
+                value="ASIGNAR"
+                action="#{control.agregarRelacion()}"
+                >
+            </h:commandButton>
+            
+            <p:dataTable var="rep" value="#{controlv.listarView()}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{rep.idal}" />
+                </p:column>
+
+                <p:column headerText="Autor">
+                    <h:outputText value="#{rep.nombrea}" />
+                </p:column>
+
+                <p:column headerText="Libro">
+                    <h:outputText value="#{rep.nombrel}"/>
+                </p:column>
+
+                <p:column headerText="Editorial">
+                    <h:outputText value="#{rep.editorial}" />
+                </p:column>
+            </p:dataTable>
+            
+            
+       </h:form>      
+    </h:body>
+</html>
+
